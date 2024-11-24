@@ -1,0 +1,46 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style Selector="Label">
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Padding" Value="3"/>
+        
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+    
+    <Style Selector="TextBox">
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Padding" Value="3"/>
+        
+        <Setter Property="HorizontalContentAlignment" Value="Right"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+    
+    <Style Selector="Button">
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Padding" Value="3"/>
+        
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        
+        <Setter Property="CornerRadius" Value="10"/>
+        
+        <Setter Property="Foreground" Value="White"/>
+        
+        <Style Selector="^:pointover">
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        
+        <Style Selector="^.save">
+            <Setter Property="Background" Value="Green"/>
+        </Style>
+        
+        <Style Selector="^.delete">
+            <Setter Property="Background" Value="Red"/>
+        </Style>
+        
+        <Style Selector="^.clear">
+            <Setter Property="Background" Value="OrangeRed"/>
+        </Style>
+    </Style>
+</Styles>
