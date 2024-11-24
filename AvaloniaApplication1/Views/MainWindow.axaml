@@ -10,11 +10,79 @@
         Title="AvaloniaApplication1">
 
     <Design.DataContext>
-        <!-- This only sets the DataContext for the previewer in an IDE,
-             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainWindowViewModel/>
     </Design.DataContext>
+    
+    <Window.Styles>
+        <StyleInclude Source="Styles.axaml"/>
+    </Window.Styles>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-
+    <DockPanel LastChildFill="True">
+        <Grid ColumnDefinitions="*, 3*, *"
+              DockPanel.Dock="Top">
+            <Label Content="Поиск"
+                   Grid.Column="0"/>
+            <TextBox Text="{Binding SearchText}"
+                     Grid.Column="1"/>
+            <Button Content="Найти"
+                    Command="{Binding CommandSearch}"
+                    Grid.Column="2"/>
+        </Grid>
+        
+        <Grid ColumnDefinitions="*, 3*">
+            <ListBox ItemsSource="{Binding Persons}"
+                     SelectedItem="{Binding SelectedPerson}"
+                     Grid.Column="0">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0} {1}">
+                                    <Binding Path="Id"/>
+                                    <Binding Path="Name"/>
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        
+            <StackPanel Grid.Column="1">
+                <Grid ColumnDefinitions="*,3*">
+                    <Label Content="ID"
+                           Grid.Column="0"/>
+                    <TextBox Text="{Binding Id}"
+                             Grid.Column="1"/>
+                </Grid>
+            
+                <Grid ColumnDefinitions="*,3*">
+                    <Label Content="Имя"
+                           Grid.Column="0"/>
+                    <TextBox Text="{Binding Name}"
+                             Grid.Column="1"/>
+                </Grid>
+            
+                <Grid ColumnDefinitions="*,3*">
+                    <Label Content="Возраст"
+                           Grid.Column="0"/>
+                    <TextBox Text="{Binding Age}"
+                             Grid.Column="1"/>
+                </Grid>
+                
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Сохранить"
+                            Command="{Binding CommandSave}"
+                            Classes="save"/>
+                    
+                    <Button Content="Удалить"
+                            Command="{Binding CommandDelete}"
+                            Classes="delete"/>
+                    
+                    <Button Content="Очистить"
+                            Command="{Binding CommandClear}"
+                            Classes="clear"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </DockPanel>
 </Window>
